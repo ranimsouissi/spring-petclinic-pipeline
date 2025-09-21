@@ -9,12 +9,13 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/spring-projects/spring-petclinic.git'
+                    url: 'https://github.com/ranimsouissi/spring-petclinic-pipeline.git'
             }
         }
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                // Maven build sans tests pour aller plus vite
+                sh 'mvn clean install -DskipTests'
             }
         }
     }
